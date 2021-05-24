@@ -3,6 +3,8 @@
   "description": "A plugin for DatoCMS that allows you select a color from a predefined list.",
   "version": "1.0.1",
   "license": "MIT",
+  "homepage": "https://github.com/thebuilder/datocms-plugin-theme-selector#readme",
+  "author": "Daniel Schmidt",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -13,6 +15,10 @@
     "docs",
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thebuilder/datocms-plugin-theme-selector"
+  },
   "keywords": [
     "datocms",
     "datocms-plugin",
