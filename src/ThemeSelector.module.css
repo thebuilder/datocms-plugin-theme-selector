@@ -1,0 +1,29 @@
+.group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.label {
+  position: relative;
+  display: block;
+}
+
+.radio {
+  opacity: 0;
+  height: 0;
+  width: 0;
+  position: absolute;
+}
+
+.radioColor {
+  display: block;
+  width: 4rem;
+  height: 2.5rem;
+  border-radius: 4px;
+}
+
+.radio:checked + .radioColor {
+  box-shadow: 0 0 0 2px white, 0 0 0 5px var(--accent-color, black);
+}
