@@ -15,6 +15,7 @@
     "docs",
     "dist"
   ],
+  "main": "dist/index.html",
   "repository": {
     "type": "git",
     "url": "https://github.com/thebuilder/datocms-plugin-theme-selector"
@@ -30,7 +31,7 @@
   ],
   "datoCmsPlugin": {
     "title": "Theme selector",
-    "previewImage": "docs/example.png",
+    "previewImage": "docs/preview.gif",
     "entryPoint": "dist/index.html",
     "fieldTypes": [
       "color"
