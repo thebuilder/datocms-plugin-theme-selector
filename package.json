@@ -1,13 +1,18 @@
 {
   "name": "datocms-plugin-theme-selector",
   "description": "A plugin for DatoCMS that allows you select a color from a predefined list.",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
     "prepublishOnly": "yarn build"
   },
+  "files": [
+    "docs",
+    "dist"
+  ],
   "keywords": [
     "datocms",
     "datocms-plugin",
