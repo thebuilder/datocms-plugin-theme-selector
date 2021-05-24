@@ -19,7 +19,38 @@ A valid list of colors could look like this:
 #feb2b2, #fc8181, #f56565, #e53e3e, #c53030
 ```
 
-### Development
+## Querying
+
+The plugin is using the `color` field, which means you have access to a color object. 
+
+```graphql
+query ArticleQuery {
+  allArticles {
+    theme {
+      hex
+      red
+      green
+      blue
+      alpha
+    }
+  }
+}
+```
+
+If you just need the `hex` value, like you added in the settings, you can limit your query lookup for that value.
+
+
+```graphql
+query ArticleQuery {
+  allArticles {
+    theme {
+      hex
+    }
+  }
+}
+```
+
+## Development
 
 The plugin is built using [Vite.js](https://vitejs.dev/). This enables a fast development workflow, where
 you see the changes as soon as you save a file. For it to work, it needs to
