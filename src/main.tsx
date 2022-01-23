@@ -43,7 +43,6 @@ connect({
     fieldExtensionId: string,
     parameters: Record<string, any>
   ) {
-    console.log(parameters)
     const errors: Record<string, string> = {};
     if (parameters.colors?.length) {
       try {

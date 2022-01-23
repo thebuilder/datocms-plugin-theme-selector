@@ -14,9 +14,11 @@ export function ConfigScreen({ ctx }: Props) {
   const [value, setValue] = useState(parameters.colors || "");
 
   useEffect(() => {
-    const configRequired = !globalColors;
+    // You need to either have global colors, or local colors defined. If not, we show an error preventing you from saving the colors.
+    const configRequired =
+      (!globalColors?.length && !parameters.colors?.length) || undefined;
     if (parameters.configRequired !== configRequired) {
-      ctx.setParameters({ ...parameters, configRequired: !globalColors });
+      ctx.setParameters({ ...parameters, configRequired: configRequired });
     }
   });
 
