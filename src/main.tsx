@@ -14,9 +14,10 @@ import { render } from "./utils/render";
 import { GlobalConfigScreen } from "./GlobalConfigScreen";
 
 const FIELD_EXTENSION_ID = "themeSelectorField";
+
 export type Parameters = {
-  colors: string;
-  localColors?: string;
+  colors?: string;
+  configRequired?: boolean
 };
 
 connect({
@@ -42,8 +43,9 @@ connect({
     fieldExtensionId: string,
     parameters: Record<string, any>
   ) {
+    console.log(parameters)
     const errors: Record<string, string> = {};
-    if (parameters.colors) {
+    if (parameters.colors?.length) {
       try {
         parameters.colors
           .split(",")
@@ -52,6 +54,9 @@ connect({
         errors.colors =
           "Invalid color string. Make sure to pass a comma seperated list of valid hex colors";
       }
+    } else if (parameters.configRequired) {
+        errors.colors =
+          "Add valid colors to the configuration";
     }
 
     return errors;

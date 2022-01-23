@@ -1,14 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TextField } from "datocms-react-ui";
 import type { Parameters } from "./main";
 import { RenderManualFieldExtensionConfigScreenCtx } from "datocms-plugin-sdk";
 type Props = {
-  ctx: RenderManualFieldExtensionConfigScreenCtx
-}
+  ctx: RenderManualFieldExtensionConfigScreenCtx;
+};
+
 export function ConfigScreen({ ctx }: Props) {
-  const parameters = ctx.plugin.attributes.parameters as Parameters;
+  const { colors: globalColors } = ctx.plugin.attributes
+    .parameters as Parameters;
+  const parameters = ctx.parameters as Parameters;
   const errors = ctx.errors as Partial<Record<string, string>>;
-  const [value, setValue] = useState(parameters.localColors || '');
+  const [value, setValue] = useState(parameters.colors || "");
+
+  useEffect(() => {
+    const configRequired = !globalColors;
+    if (parameters.configRequired !== configRequired) {
+      ctx.setParameters({ ...parameters, configRequired: !globalColors });
+    }
+  });
 
   return (
     <form>
@@ -22,7 +32,7 @@ export function ConfigScreen({ ctx }: Props) {
         error={errors.colors}
         onChange={(newValue) => {
           setValue(newValue);
-          ctx.setParameters({ localColors: newValue });
+          ctx.setParameters({ ...parameters, colors: newValue });
         }}
       />
     </form>

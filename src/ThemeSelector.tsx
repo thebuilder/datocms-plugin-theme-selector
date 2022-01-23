@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { parseToRgb, rgb } from "polished";
 import styles from "./ThemeSelector.module.css";
 import { RenderFieldExtensionCtx } from "datocms-plugin-sdk";
@@ -17,7 +17,12 @@ function ColorButton({ color, checked, onChange }) {
         value={color}
         onChange={onChange}
       />
-      <span className={styles.radioColor} style={{ background: color }} />
+      <span
+        className={styles.radioColor}
+        style={{
+          background: color,
+        }}
+      />
     </label>
   );
 }
@@ -27,29 +32,39 @@ type Props = {
 };
 
 export function ThemeSelector({ ctx }: Props) {
-  const parameters = ctx.plugin.attributes.parameters as Parameters;
+  const { colors: globalColors } = ctx.plugin.attributes
+    .parameters as Parameters;
+  const { colors: localColors } = ctx.parameters as Parameters;
+
   let colors = useMemo(() => {
     try {
       return [
         // Ensure the colors are unique
         ...new Set(
-          (parameters.localColors || parameters.colors || "")
-            .split(",")
-            .map((color) => {
-              return rgb(parseToRgb(color.trim()));
-            })
+          (localColors || globalColors || "").split(",").map((color) => {
+            return rgb(parseToRgb(color.trim()));
+          })
         ),
       ];
     } catch (e) {
       ctx.alert(e.message);
       return [];
     }
-  }, [parameters.colors, parameters.localColors]);
+  }, [localColors, globalColors]);
 
   const isRequired = Boolean(ctx.field.attributes.validators?.required);
   const currentColor = ctx.formValues[ctx.fieldPath]
     ? rgb(ctx.formValues[ctx.fieldPath] as RgbColor)
     : undefined;
+
+  if (!colors.length) {
+    return (
+      <p className={styles.error}>
+        Invalid configuration in <strong>Theme Selector</strong>. Make sure it
+        defines a valid list of colors.
+      </p>
+    );
+  }
 
   return (
     <div className={styles.group}>

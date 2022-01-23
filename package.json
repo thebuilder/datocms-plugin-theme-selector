@@ -34,28 +34,7 @@
     "previewImage": "docs/preview.gif",
     "coverImage": "docs/cover.png",
     "entryPoint": "dist/index.html",
-    "fieldTypes": [
-      "color"
-    ],
-    "pluginType": "field_editor",
-    "parameters": {
-      "global": [
-        {
-          "id": "colors",
-          "label": "Global Colors",
-          "type": "string",
-          "hint": "List colors the editor can select between. Delimit colors with a comma."
-        }
-      ],
-      "instance": [
-        {
-          "id": "colors",
-          "label": "Preset colors",
-          "type": "string",
-          "hint": "List colors the editor can select between. Delimit colors with a comma."
-        }
-      ]
-    }
+    "permissions": []
   },
   "dependencies": {
     "datocms-plugin-sdk": "^0.3.34",
