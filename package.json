@@ -1,7 +1,7 @@
 {
   "name": "datocms-plugin-theme-selector",
   "description": "A plugin for DatoCMS that allows you select a color from a predefined list.",
-  "version": "1.0.5",
+  "version": "2.0.0",
   "license": "MIT",
   "homepage": "https://github.com/thebuilder/datocms-plugin-theme-selector#readme",
   "author": "Daniel Schmidt",
@@ -34,37 +34,21 @@
     "previewImage": "docs/preview.gif",
     "coverImage": "docs/cover.png",
     "entryPoint": "dist/index.html",
-    "fieldTypes": [
-      "color"
-    ],
-    "pluginType": "field_editor",
-    "parameters": {
-      "global": [
-        {
-          "id": "colors",
-          "label": "Global Colors",
-          "type": "string",
-          "hint": "List colors the editor can select between. Delimit colors with a comma."
-        }
-      ],
-      "instance": [
-        {
-          "id": "colors",
-          "label": "Preset colors",
-          "type": "string",
-          "hint": "List colors the editor can select between. Delimit colors with a comma."
-        }
-      ]
-    }
+    "permissions": []
   },
   "dependencies": {
+    "datocms-plugin-sdk": "^0.3.34",
+    "datocms-react-ui": "^0.3.34",
     "polished": "^4.1.3",
     "react": "^17.0.0",
     "react-dom": "^17.0.0"
   },
   "devDependencies": {
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
     "@vitejs/plugin-react-refresh": "^1.3.6",
     "prettier": "^2.4.1",
+    "typescript": "^4.5.5",
     "vite": "^2.6.3"
   }
 }

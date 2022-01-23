@@ -24,6 +24,10 @@
   border-radius: 4px;
 }
 
+.error {
+  color: var(--alert-color);
+}
+
 .radio:checked + .radioColor {
   box-shadow: 0 0 0 2px white, 0 0 0 5px var(--accent-color, black);
 }
