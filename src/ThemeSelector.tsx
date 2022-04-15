@@ -1,5 +1,6 @@
 import React, { useMemo } from "react";
 import { parseToRgb, rgb } from "polished";
+import { get } from "lodash";
 import styles from "./ThemeSelector.module.css";
 import { RenderFieldExtensionCtx } from "datocms-plugin-sdk";
 import { Button } from "datocms-react-ui";
@@ -53,8 +54,9 @@ export function ThemeSelector({ ctx }: Props) {
   }, [localColors, globalColors]);
 
   const isRequired = Boolean(ctx.field.attributes.validators?.required);
-  const currentColor = ctx.formValues[ctx.fieldPath]
-    ? rgb(ctx.formValues[ctx.fieldPath] as RgbColor)
+  const selectedColor = get(ctx.formValues, ctx.fieldPath);
+  const currentColor = selectedColor
+    ? rgb(selectedColor as RgbColor)
     : undefined;
 
   if (!colors.length) {
